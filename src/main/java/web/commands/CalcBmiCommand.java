@@ -1,6 +1,7 @@
 package web.commands;
 
 import business.exceptions.UserException;
+import business.services.BMIUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,24 +24,14 @@ public class CalcBmiCommand extends CommandUnprotectedPage {
             height = Double.parseDouble(request.getParameter("height"));
             weight = Double.parseDouble(request.getParameter("weight"));
         } catch (NumberFormatException e) {
-            throw new UserException("Husk at du skal indtaste heltal i formularen");
+            request.setAttribute("error"," Husk at du skal indtaste heltal i formularen");
+            return "index";
+
         }
 
-        bmi = weight / ((height / 100) * (height / 100));
-
-        if (bmi > 30) {
-            category = "Svært overvægtig";
-
-        } else if (bmi < 18.5) {
-            category = "Undervægtig";
-
-        } else if (bmi < 25) {
-            category = "Normalvægtig";
-
-        } else {
-            category = "Overvægtig";
-        }
-        request.setAttribute("bmi", bmi);
+        bmi = BMIUtil.calcBMI(height,weight);
+       category= BMIUtil.getCategory(bmi);
+        request.setAttribute("bmi", String.format("%.2f",bmi));
         request.setAttribute("height", height);
         request.setAttribute("weight", weight);
         request.setAttribute("category",category);

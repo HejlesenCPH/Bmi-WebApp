@@ -13,6 +13,9 @@
     </jsp:attribute>
 
     <jsp:body>
+        <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
 
         <div>
             <h2>BMI result</h2>
@@ -24,7 +27,9 @@
             <p> Du er ${requestScope.category}
             </p>
 
-
+            <div class="col-sm-4"></div>
+        </div>
+        </div>
 
 
 
