@@ -26,7 +26,7 @@ public class CalcBmiCommand extends CommandUnprotectedPage {
             throw new UserException("Husk at du skal indtaste heltal i formularen");
         }
 
-        bmi = weight / (height * 100) * (height * 100);
+        bmi = weight / ((height / 100) * (height / 100));
 
         if (bmi > 30) {
             category = "Svært overvægtig";

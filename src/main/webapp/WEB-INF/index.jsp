@@ -19,12 +19,12 @@
 
            <form method="post" action="fc/bmiresult" >
                <label for="height">Højde i cm: </label>
-               <input id=height name="heihgt" type="text"/> <br>
+               <input id=height name="height" type="text"/> <br>
 
                <label for="weight"> Vægt i kg:  </label>
 
 
-               <input id=weight name="weihgt" type="text"/> <br>
+               <input id=weight name="weight" type="text"/> <br>
                <button type="submit"> Beregn BMI </button>
            </form>
 
